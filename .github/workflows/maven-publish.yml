@@ -40,10 +40,14 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: magic.jar
-        path: ./magic.jar
+        path: ./downloaded-artifacts
 
-    - name: Check if magic.jar exists
-      run: ls -l ./magic.jar
+    - name: Check downloaded artifacts
+      run: ls -l ./downloaded-artifacts
+
+    - name: Find magic.jar
+      id: find_jar
+      run: echo "JAR_PATH=$(find ./downloaded-artifacts -name '*.jar')" >> $GITHUB_ENV
 
     - name: Create Release
       id: create_release
@@ -62,6 +66,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: magic.jar
+        asset_path: ${{ env.JAR_PATH }}
         asset_name: magic.jar
         asset_content_type: application/java-archive
