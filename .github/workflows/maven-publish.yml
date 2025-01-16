@@ -55,6 +55,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: /tmp/magic.jar
+        asset_path: magic.jar
         asset_name: magic.jar
         asset_content_type: application/java-archive
