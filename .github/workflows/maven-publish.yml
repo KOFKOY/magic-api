@@ -37,6 +37,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: magic.jar
+        path: ./
 
     - name: Create Release
       id: create_release
@@ -55,6 +56,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: magic.jar
+        asset_path: ./magic.jar
         asset_name: magic.jar
         asset_content_type: application/java-archive
