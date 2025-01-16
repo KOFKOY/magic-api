@@ -42,7 +42,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GB_TOKEN }}
       with:
-        tag_name: magic-release
+        tag_name: ${{ github.ref }}
         release_name: magic-release
         draft: false
         prerelease: false
