@@ -31,6 +31,10 @@ spring:
     active: dev
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: 123456
+    url: jdbc:postgresql://localhost:19003/magic_db
+    username: wsj
+    password: wsj123456
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
